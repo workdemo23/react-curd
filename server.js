@@ -63,6 +63,17 @@ todoRoutes.route('/update/:id').post(function(req, res){
     })
 });
 
+todoRoutes.route('/delete/:id').post(function(req, res){   
+
+    let id = req.params.id;
+    console.log("enter delete");
+    
+    Todo.deleteOne({ _id: id }, function (err, results) {
+    });
+    res.json({ success: id })
+});
+
+
 app.use('/todos',todoRoutes);
 app.listen(PORT,function(){
     console.log("server is running on port:" + PORT);
